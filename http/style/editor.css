@@ -47,6 +47,26 @@ body {
 	padding: 0;
 }
 
+/*>>-- Colonne autoresize*/
+
+#editor-page > .container > .column3 {
+	margin-right:15px;
+	margin-bottom:15px;
+	resize:horizontal;
+	overflow:hidden;/*obligatoire avec le resize*/
+}
+
+#editor-page > .container > .column9 {
+	width:calc(75% - 15px);
+}
+
+#editor-left {
+	margin-right:0px;
+	margin-bottom:0px;
+}
+
+/*<<--*/
+
 #editor-settings-button img {
 	width: 20px;
 }

@@ -649,6 +649,18 @@ LW.pages.editor.init = function(params, $scope, $page) {
 		}
 		$('.search-panel .next').click(search_next)
 		$('.search-panel .previous').click(search_previous)
+		console.log("ok");
+		//Auto-resize left toolbar
+		var $abc3 = $("#editor-page > .container > .column3"),
+			$abc9 = $("#editor-page > .container > .column9");
+		$abc3.css("resize", "horizontal")
+		$abc3.on("DOMAttrModified", function (ev) {
+			if (ev.originalEvent.attrName == "style") {
+				console.log(arguments);
+				$abc9.width($abc9.parent().innerWidth() - $abc3.width() - 15);
+			}
+		});
+
 	})
 
 	setTimeout(LW.pages.editor.resize, 200)
@@ -674,7 +686,9 @@ LW.pages.editor.resize = function() {
 	var offset = 160 + (_searchEnabled ? 40 : 0)
 
 	$('.CodeMirror-scroll').css('height', $(window).height() - offset)
-	$('#ai-list').css('height', $(window).height() - 160 - 83)
+	$('#ai-list').css('height', $(window).height() - 160 - 90)
+	if ($("#editors").outerHeight() >= 20) //Pour le temps de chargement.
+		$('#editor-left').css('height', $("#editors").outerHeight())
 }
 
 LW.pages.editor.leave = function() {
